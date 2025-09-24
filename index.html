@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i|Tinos:400,400i&amp;subset=cyrillic" rel="stylesheet">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="game.js"></script>
+		<style>
+* { box-sizing: border-box; }
+body, html { height: 100%; margin: 0; padding: 0; }
+body { background-color: #000000; color: #ffffff; font-family: Arial, sans-serif; padding: 20px; }
+h1 { font-family: "Playfair Display"; font-size: 30px; padding: 10px 0px; margin: 0px; }
+.field-box { border: 2px solid #d0d0d0; float: left; margin-bottom: 20px; }
+.field { position: relative; width: 1024px; height: 640px; }
+.field .tile { position: absolute; width: 25px; height: 25px; background-size: 100%; background-image: url(images/tile-.png); z-index: 5; }
+.field .tileW { background-image: url(images/tile-W.png); }
+.field .tileE { background-image: url(images/tile-E.png); z-index: 10; }
+.field .tileP { background-image: url(images/tile-P.png); z-index: 10; }
+.field .tileHP { background-image: url(images/tile-HP.png); z-index: 9; }
+.field .tileSW { background-image: url(images/tile-SW.png); z-index: 9; }
+
+.inventory-box { border: 2px solid #d0d0d0; float: left; }
+.inventory { position: relative; width: 800px; height: 32px; }
+.cl { clear: both; display: block; }
+.stats { margin-top: 20px; font-size: 18px; }
+.controls { margin-top: 10px; font-size: 16px; color: #aaa; }
+.field .tile .health 
+{ 
+    background-color: #ff0000; 
+    z-index: 11; 
+    position: absolute; 
+    left: 0px; 
+    top: 0px; 
+    height: 3px; 
+}
+.field .tileP .health 
+{ 
+    background-color: #00ff00; 
+}
+		</style>
+	</head>
+	<body>
+		<h1>Игровое поле</h1>
+		<div class="field-box"><div class="field"></div></div>
+		<div class="cl"></div>
+		
+		<div class="stats">
+			<div>Здоровье героя: <span id="hero-health">100</span>/100</div>
+			<div>Сила атаки: <span id="hero-attack">10</span></div>
+			<div>Собрано зелий: <span id="potions-collected">0</span></div>
+			<div>Собрано мечей: <span id="swords-collected">0</span></div>
+			<div>Убито врагов: <span id="enemies-killed">0</span></div>
+		</div>
+
+		<script>
+			$(document).ready(function() {
+				var game = new Game();
+				game.init();
+			});
+		</script>
+	</body>
+</html>
